@@ -10,9 +10,9 @@ import org.apache.catalina.LifecycleListener;
 
 class HotDeployLifecycleListener implements LifecycleListener {
 
-    private final Context applicationContext;
-    private final String monitor;
-    private final long delay;
+    public final Context applicationContext;
+    public final String monitor;
+    public final long delay;
 
     public HotDeployLifecycleListener(Context applicationContext, String monitor, long delay) {
         this.applicationContext = applicationContext;
