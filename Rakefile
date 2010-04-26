@@ -123,8 +123,7 @@ task :gemspec => :validate do
     split("\n").
     sort.
     reject { |file| file =~ /^\./ }.
-    reject { |file| file =~ /^(rdoc|pkg|src)/ }.
-    reject { |file| file =~ /tomcat-core.jar/ }.
+    reject { |file| file =~ /^(rdoc|pkg|src|trinidad-libs|racklib)/ }.
     map { |file| "    #{file}" }.
     join("\n")
 

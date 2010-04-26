@@ -20,7 +20,7 @@ public class HotDeployObserver extends Thread {
     private long lastModified;
 
     public HotDeployObserver(Context applicationContext, String monitor, long delay) {
-        super("TrinidadHotDeployerObserver");
+        super("TrinidadHotDeployObserver");
         this.applicationContext = applicationContext;
         this.monitor = new File(monitor);
         this.delay = delay;
@@ -39,6 +39,7 @@ public class HotDeployObserver extends Thread {
             lastModified = monitor.lastModified();
         } catch (IOException io) {
             System.err.println("Was not allowed to create the monitor: " + monitor.getAbsolutePath());
+            interrupted = true;
         }
     }
 
@@ -64,7 +65,7 @@ public class HotDeployObserver extends Thread {
         }
     }
 
-    public void run() {    
+    public void run() {
         while(!interrupted) {
           try {
             Thread.sleep(delay);
@@ -91,7 +92,7 @@ public class HotDeployObserver extends Thread {
             System.out.println("starting " + applicationContext.getName());
             ((Lifecycle)applicationContext).start();
         } catch (LifecycleException ex) {
-            ex.printStackTrace();
+            System.err.println("can not restart " + applicationContext.getName() + ": " + ex.getMessage());
         }
     }
 }

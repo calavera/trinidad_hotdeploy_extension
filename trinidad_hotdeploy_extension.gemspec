@@ -58,10 +58,6 @@ Gem::Specification.new do |s|
     build.rake
     lib/trinidad_hotdeploy_extension.rb
     rakelib/build.rake
-    target/org/jruby/trinidad/HotDeployLifecycleListener$1.class
-    target/org/jruby/trinidad/HotDeployLifecycleListener.class
-    target/org/jruby/trinidad/HotDeployObserver.class
-    trinidad-libs/trinidad-hotdeploy-extension.jar
     trinidad_hotdeploy_extension.gemspec
     trinidad-libs/trinidad-hotdeploy-extension.jar
   ]
