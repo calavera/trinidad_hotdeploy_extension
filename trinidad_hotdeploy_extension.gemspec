@@ -55,7 +55,6 @@ Gem::Specification.new do |s|
     LICENSE
     README
     Rakefile
-    build.rake
     lib/trinidad_hotdeploy_extension.rb
     rakelib/build.rake
     trinidad_hotdeploy_extension.gemspec
