@@ -1,0 +1,20 @@
+Trinidad hotdeploy extension
+======
+
+# DESCRIPTION
+
+Extension to allow Trinidad to redeploy an application each time a file, for instance tmp/restart.txt, is modified without restarting Tomcat.
+
+This extension is in an early development stage and right now just works with the development version of Trinidad.
+
+# CONFIGURE
+
+To configure it, you need to add it into the extensions section of a web application, it also allows to configure the name of the file to monitor and the period that it waits to check the file.
+
+    ---
+      web_apps:
+        default:
+          extensions:
+            hotdeploy:
+              monitor: tmp/restart.txt # this parameter is optional
+              deplay: 30000 # this parameter is optional
