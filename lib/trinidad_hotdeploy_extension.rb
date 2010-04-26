@@ -6,8 +6,8 @@ module Trinidad
       VERSION = '0.1.0'
 
       def configure(tomcat, app_context)
-        @options[:monitor] ||= 'tmp/restart.txt'
-        monitor = File.expand_path(File.join(app_context.doc_base, @options[:monitor]))
+        @options[:monitor] ||= File.join(app_context.doc_base, 'tmp/restart.txt')
+        monitor = File.expand_path(options[:monitor])
         delay = @options[:delay] || 1000
 
         listener = org.jruby.trinidad.HotDeployLifecycleListener.new(app_context, monitor, delay)
