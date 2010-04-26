@@ -17,4 +17,4 @@ To configure it, you need to add it into the extensions section of a web applica
           extensions:
             hotdeploy:
               monitor: tmp/restart.txt # this parameter is optional
-              deplay: 30000 # this parameter is optional
+              delay: 30000 # this parameter is optional
