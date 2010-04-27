@@ -77,6 +77,7 @@ public class HotDeployObserver extends Thread {
 
     private void restartApplicationContext() {
         try {
+            // parameters don't configured by web.xml are remove when the context stops
             Map<String, String> parameters = new HashMap<String, String>();
             for (String parameter : applicationContext.findParameters()) {
                 parameters.put(parameter, applicationContext.findParameter(parameter));
@@ -86,7 +87,10 @@ public class HotDeployObserver extends Thread {
             ((Lifecycle)applicationContext).stop();
 
             for (Map.Entry<String, String> entry : parameters.entrySet()) {
-                applicationContext.addParameter(entry.getKey(), entry.getValue());
+                // preventing duplicate parameters
+                if (applicationContext.findParameter(entry.getKey()) == null) {
+                    applicationContext.addParameter(entry.getKey(), entry.getValue());
+                }
             }
 
             System.out.println("starting " + applicationContext.getName());
