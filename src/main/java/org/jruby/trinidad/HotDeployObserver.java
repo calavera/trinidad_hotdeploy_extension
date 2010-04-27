@@ -86,6 +86,9 @@ public class HotDeployObserver extends Thread {
             System.out.println("stoping " + applicationContext.getName());
             ((Lifecycle)applicationContext).stop();
 
+            // context.start runs a new thread so we are going to interrupt this one
+            interrupted = true;
+
             for (Map.Entry<String, String> entry : parameters.entrySet()) {
                 // preventing duplicate parameters
                 if (applicationContext.findParameter(entry.getKey()) == null) {
