@@ -57,7 +57,6 @@ public class HotDeployObserver extends Thread {
             long last = monitor.lastModified();
             if (last > lastModified) {
                 lastModified = last;
-                System.out.println("reloading " + applicationContext.getName());
                 restartApplicationContext();
             }
         } else {
@@ -83,7 +82,6 @@ public class HotDeployObserver extends Thread {
                 parameters.put(parameter, applicationContext.findParameter(parameter));
             }
 
-            System.out.println("stoping " + applicationContext.getName());
             ((Lifecycle)applicationContext).stop();
 
             // context.start runs a new thread so we are going to interrupt this one
@@ -96,7 +94,6 @@ public class HotDeployObserver extends Thread {
                 }
             }
 
-            System.out.println("starting " + applicationContext.getName());
             ((Lifecycle)applicationContext).start();
         } catch (LifecycleException ex) {
             System.err.println("can not restart " + applicationContext.getName() + ": " + ex.getMessage());
