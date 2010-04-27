@@ -5,7 +5,11 @@ Trinidad hotdeploy extension
 
 Extension to allow Trinidad to redeploy an application each time a file, for instance tmp/restart.txt, is modified without restarting Tomcat.
 
-This extension is in an early development stage and right now just works with the development version of Trinidad.
+[WARNING] This extension only works with Trinidad 0.9.0 or avobe.
+
+# INSTALL
+
+    $ jruby -S gem install trinidad_hotdeploy_extensions
 
 # CONFIGURE
 
@@ -16,5 +20,12 @@ To configure it, you need to add it into the extensions section of a web applica
         default:
           extensions:
             hotdeploy:
-              monitor: tmp/restart.txt # this parameter is optional
-              delay: 30000 # this parameter is optional
+              monitor: tmp/restart.txt # this parameter is optional, the default value is tmp/restart.txt
+              delay: 30000 # in milliseconds, this parameter is optional, the default value is 1 second
+
+
+You can find further information on how to write your own extension in the wiki: http://wiki.github.com/calavera/trinidad/extensions
+
+# Copyright
+
+Copyright (c) 2010 David Calavera. See LICENSE for details.

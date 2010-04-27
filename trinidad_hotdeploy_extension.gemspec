@@ -14,7 +14,7 @@ Gem::Specification.new do |s|
   ## the sub! line in the Rakefile
   s.name              = 'trinidad_hotdeploy_extension'
   s.version           = '0.1.0'
-  s.date              = '2010-04-26'
+  s.date              = '2010-04-28'
   s.rubyforge_project = 'trinidad_hotdeploy_extension'
 
   ## Make sure your summary is short. The description may be as long
@@ -57,6 +57,9 @@ Gem::Specification.new do |s|
     Rakefile
     lib/trinidad_hotdeploy_extension.rb
     rakelib/build.rake
+    spec/spec.opts
+    spec/spec_helper.rb
+    spec/trinidad_hotdeploy_extension_spec.rb
     trinidad_hotdeploy_extension.gemspec
     trinidad-libs/trinidad-hotdeploy-extension.jar
   ]
