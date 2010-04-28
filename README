@@ -13,7 +13,11 @@ Extension to allow Trinidad to redeploy an application each time a file, for ins
 
 # CONFIGURE
 
-To configure it, you need to add it into the extensions section of a web application, it also allows to configure the name of the file to monitor and the period that it waits to check the file.
+To configure it, you need to add it into the extensions section of a web application in the Trinidad's configuration file.
+
+http://wiki.github.com/calavera/trinidad/advanced-configuration
+
+It also allows to configure the name of the file to monitorize and the period of time that it waits between each check.
 
     ---
       web_apps:
