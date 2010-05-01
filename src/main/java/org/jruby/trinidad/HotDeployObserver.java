@@ -76,24 +76,8 @@ public class HotDeployObserver extends Thread {
 
     private void restartApplicationContext() {
         try {
-            // parameters don't configured by web.xml are remove when the context stops
-            Map<String, String> parameters = new HashMap<String, String>();
-            for (String parameter : applicationContext.findParameters()) {
-                parameters.put(parameter, applicationContext.findParameter(parameter));
-            }
-
-            ((Lifecycle)applicationContext).stop();
-
-            // context.start runs a new thread so we are going to interrupt this one
             interrupted = true;
-
-            for (Map.Entry<String, String> entry : parameters.entrySet()) {
-                // preventing duplicate parameters
-                if (applicationContext.findParameter(entry.getKey()) == null) {
-                    applicationContext.addParameter(entry.getKey(), entry.getValue());
-                }
-            }
-
+            ((Lifecycle)applicationContext).stop();
             ((Lifecycle)applicationContext).start();
         } catch (LifecycleException ex) {
             System.err.println("can not restart " + applicationContext.getName() + ": " + ex.getMessage());
