@@ -3,7 +3,7 @@ module Trinidad
     require File.expand_path('../../trinidad-libs/trinidad-hotdeploy-extension.jar', __FILE__)
 
     class HotdeployWebAppExtension < WebAppExtension
-      VERSION = '0.1.0'
+      VERSION = '0.1.1'
 
       def configure(tomcat, app_context)
         @options[:monitor] ||= File.join(app_context.doc_base, 'tmp/restart.txt')
