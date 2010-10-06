@@ -13,7 +13,7 @@ Extension to allow Trinidad to redeploy an application each time a file, for ins
 
 # CONFIGURE
 
-To configure it, you need to add it into the extensions section of a web application in the Trinidad's configuration file.
+To configure it, we need to add it into the extensions section of a web application in the Trinidad's configuration file.
 
 http://wiki.github.com/calavera/trinidad/advanced-configuration
 
@@ -27,8 +27,12 @@ It also allows to configure the name of the file to monitorize and the period of
               monitor: tmp/restart.txt # this parameter is optional, the default value is tmp/restart.txt
               delay: 30000 # in milliseconds, this parameter is optional, the default value is 1 second
 
+This extension can also be loaded from the command line with its default parameters:
 
-You can find further information on how to write your own extension in the wiki: http://wiki.github.com/calavera/trinidad/extensions
+  $ jruby -S trinidad --load hotdeploy
+
+
+Further information on how to write your own extension can be found in the wiki: http://wiki.github.com/calavera/trinidad/extensions
 
 # Copyright
 

@@ -1,3 +1,7 @@
+== 0.3.1 (2010-10-06)
+
+* Load the extension from the command line
+
 == 0.3.0 (2010-10-06)
 
 * Use the reload method that means the server doesn't lose requests while starting up again. Thanks to David Yang to point me to the properly method.

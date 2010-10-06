@@ -44,3 +44,14 @@ describe Trinidad::Extensions::HotdeployWebAppExtension do
     listener.delay.should == 30000
   end
 end
+
+describe Trinidad::Extensions::HotdeployOptionsExtension do
+  it "allows to specify a command line option to load the hotdeploy" do
+    parser = OptionParser.new
+    options = {}
+
+    subject.configure(parser, options)
+
+    options[:extensions].keys.should include(:hotdeploy)
+  end
+end
