@@ -75,12 +75,7 @@ public class HotDeployObserver extends Thread {
     }
 
     private void restartApplicationContext() {
-        try {
-            interrupted = true;
-            ((Lifecycle)applicationContext).stop();
-            ((Lifecycle)applicationContext).start();
-        } catch (LifecycleException ex) {
-            System.err.println("can not restart " + applicationContext.getName() + ": " + ex.getMessage());
-        }
+        interrupted = true;
+        applicationContext.reload();
     }
 }
