@@ -9,7 +9,7 @@ Extension to allow Trinidad to redeploy an application each time a file, for ins
 
 # INSTALL
 
-    $ jruby -S gem install trinidad_hotdeploy_extensions
+    $ jruby -S gem install trinidad_hotdeploy_extension
 
 # CONFIGURE
 
