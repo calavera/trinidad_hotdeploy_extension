@@ -43,6 +43,12 @@ describe Trinidad::Extensions::HotdeployWebAppExtension do
     listener = ext.configure(@tomcat, @context)
     listener.delay.should == 30000
   end
+
+  it "uses the doc_base path if the context it's a war file" do
+    @context.doc_base = 'foo.war'
+    listener = subject.configure(@tomcat, @context)
+    listener.monitor.should =~ /foo\.war$/
+  end
 end
 
 describe Trinidad::Extensions::HotdeployOptionsExtension do

@@ -3,18 +3,25 @@ module Trinidad
     require File.expand_path('../../trinidad-libs/trinidad-hotdeploy-extension.jar', __FILE__)
 
     module Hotdeploy
-      VERSION = '0.3.1'
+      VERSION = '0.4.0'
     end
 
     class HotdeployWebAppExtension < WebAppExtension
       def configure(tomcat, app_context)
-        @options[:monitor] ||= File.join(app_context.doc_base, 'tmp/restart.txt')
-        monitor = File.expand_path(@options[:monitor])
+        monitor_file = File.expand_path(monitor(app_context))
         delay = @options[:delay] || 1000
 
-        listener = org.jruby.trinidad.HotDeployLifecycleListener.new(app_context, monitor, delay)
+        listener = org.jruby.trinidad.HotDeployLifecycleListener.new(app_context, monitor_file, delay)
         app_context.addLifecycleListener(listener)
         listener
+      end
+
+      def monitor(app_context)
+        @options[:monitor] ||= begin
+          doc_base = app_context.doc_base
+          doc_base = File.join(doc_base, 'tmp/restart.txt') if !(doc_base =~ /\.war$/)
+          doc_base
+        end
       end
     end
 
