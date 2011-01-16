@@ -59,5 +59,6 @@ describe Trinidad::Extensions::HotdeployOptionsExtension do
     subject.configure(parser, options)
 
     options[:extensions].keys.should include(:hotdeploy)
+    options[:extensions][:hotdeploy].should be_instance_of(Hash)
   end
 end

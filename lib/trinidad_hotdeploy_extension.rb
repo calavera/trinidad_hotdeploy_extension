@@ -28,7 +28,7 @@ module Trinidad
     class HotdeployOptionsExtension < OptionsExtension
       def configure(parser, default_options)
         default_options[:extensions] ||= {}
-        default_options[:extensions][:hotdeploy] = []
+        default_options[:extensions][:hotdeploy] = {}
       end
     end
   end
