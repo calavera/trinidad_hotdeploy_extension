@@ -38,7 +38,7 @@ public class HotDeployObserver extends Thread {
             monitor.createNewFile();
             lastModified = monitor.lastModified();
         } catch (IOException io) {
-            System.err.println("Was not allowed to create the monitor: " + monitor.getAbsolutePath());
+            System.err.println("[ERROR] Unable to create the monitor file: " + monitor.getAbsolutePath());
             interrupted = true;
         }
     }
@@ -47,10 +47,22 @@ public class HotDeployObserver extends Thread {
         boolean monitorExists;
         try {
             monitorExists = monitor.exists();
-        } catch(SecurityException  e) {
-            System.err.println("Was not allowed to check monitor existance: " + monitor.getAbsolutePath());
-            interrupted = true;
-            return;
+        } catch (SecurityException  e) {
+            // double check. Capistrano removes the parent directory temporarily
+            try {
+                Thread.sleep(500);
+            } catch (InterruptedException e1) {
+                System.err.println("[ERROR] Thread interrupted");
+                interrupted = true;
+                return;
+            }
+            try {
+                monitorExists = monitor.exists();
+            } catch (SecurityException e1) {
+                System.err.println("[WARNING] The monitor file doesn't exist: " + monitor.getAbsolutePath());
+                System.err.println("[WARNING] Trying to check it again in " + delay + "ms");
+                return;
+            }
         }
 
         if (monitorExists) {
