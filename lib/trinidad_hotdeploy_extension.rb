@@ -3,7 +3,7 @@ module Trinidad
     require File.expand_path('../../trinidad-libs/trinidad-hotdeploy-extension.jar', __FILE__)
 
     module Hotdeploy
-      VERSION = '0.4.1'
+      VERSION = '0.4.2'
     end
 
     class HotdeployWebAppExtension < WebAppExtension
